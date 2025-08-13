@@ -273,6 +273,7 @@ build_xcframework() {
 	build_archive "iOS" "$archives_path"
 	build_archive "iOS Simulator" "$archives_path"
 	build_archive "macOS" "$archives_path"
+	build_archive "macOS,variant=Mac Catalyst" "$archives_path"
 
 	printf '%s' "Creating XCFramework ... "
 	pushd "$workdir" >/dev/null 2>&1
@@ -280,6 +281,7 @@ build_xcframework() {
  		-archive "${archives_dir}/GRDB-iOS.xcarchive" -framework GRDB.framework \
 		-archive "${archives_dir}/GRDB-iOS Simulator.xcarchive" -framework GRDB.framework \
 		-archive "${archives_dir}/GRDB-macOS.xcarchive" -framework GRDB.framework \
+		-archive "${archives_dir}/GRDB-macOS,variant=Mac Catalyst.xcarchive" -framework GRDB.framework \
 		-output "${xcframework}" >/dev/null 2>&1
 	popd >/dev/null 2>&1
 	echo "✅"
